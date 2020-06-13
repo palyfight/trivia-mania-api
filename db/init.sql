@@ -1,0 +1,11 @@
+CREATE DATABASE trivia;
+use trivia;
+
+CREATE TABLE user (
+  ID INT AUTO_INCREMENT PRIMARY KEY,
+  UserName VARCHAR(255) NOT NULL,
+  Email VARCHAR(255) NOT NULL,
+  Password VARCHAR(255) NOT NULL,
+  TotalScore SMALLINT,
+  CONSTRAINT UC_Person UNIQUE(ID, UserName, Email)
+);

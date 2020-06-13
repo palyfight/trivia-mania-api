@@ -1,0 +1,4 @@
+mysql-connector
+SimpleJSON
+python-dotenv
+Watchdog
