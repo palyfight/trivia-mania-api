@@ -8,8 +8,9 @@ RUN pip install --upgrade pip
 # creates a directory with this name if it doesn’t exist
 WORKDIR /app
 
-COPY main.py /app
-COPY requirements.txt /app
+COPY . /app
+#COPY main.py /app
+#COPY requirements.txt /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
