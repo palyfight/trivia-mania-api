@@ -20,17 +20,20 @@ def register():
 	username = request.form.get('username')
 	email = request.form.get('email')
 	password = bcrypt.generate_password_hash(request.form.get('password'))
-	save_to_db(username, email, password)
-	# if save to db worked, send email ????
-	#send_email(email)
-	# if email sent successfully, return 200 ???
-	#return request.form
-	return Response('', status=200, mimetype='application/json')
+	# check if user already exist
+	q = triviadb.session.query(User).filter(User.email==email)
+	if triviadb.session.query(q.exists()):
+		return Response('That email already exists', status=500, mimetype='application/json')
+	else:
+		save_to_db(username, email, password)
+		return Response('', status=200, mimetype='application/json')
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
+    email = request.form.get('email')
+    password = bcrypt.generate_password_hash(request.form.get('password'))
 	# yolo
-	print("hello world!")
+	#print("hello world!")
 
 @app.route("/search/<username>", methods=['GET'])
 def search(username):
