@@ -8,6 +8,7 @@ CREATE TABLE user (
   Password VARCHAR(255) NOT NULL,
   TotalScore SMALLINT,
   BestScore SMALLINT,
+  LastPlayDate DATE,
   CONSTRAINT UC_Person UNIQUE(ID, UserName, Email)
 );
 
@@ -37,6 +38,7 @@ CREATE TABLE leaderboard (
 	UserID INT NOT NULL,
 	CategoryID INT NOT NULL,
 	Score SMALLINT,
+	DateOfPlay DATE,
 	FOREIGN KEY (UserID) REFERENCES user(ID),
 	FOREIGN KEY (CategoryID) REFERENCES category(ID)
 );

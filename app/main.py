@@ -27,6 +27,17 @@ def register():
 	#return request.form
 	return Response('', status=200, mimetype='application/json')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	# yolo
+	print("hello world!")
+
+@app.route("/search/<username>", methods=['GET'])
+def search(username):
+	# query sur searchTerm avec like
+	# return all values
+	print("yaooooo!")
+
 def save_to_db(username, email, password):
 	user = User(username=username, email=email, password=password)
 	triviadb.session.add(user)
